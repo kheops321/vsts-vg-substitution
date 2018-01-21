@@ -1,0 +1,43 @@
+{
+  "id": "61cc9ba0-8e4b-11e7-80fe-3defcd615210",
+  "name": "SubstituteVariableGroup",
+  "friendlyName": "Cellenza - Substitue variable group",
+  "description": "Allow loading specific variable group depending on environement configuration",
+  "author": "Walid AMMAR",
+  "helpMarkDown": "",
+  "category": "Deploy",
+  "visibility": [
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "substitute variable group",
+  "inputs": [
+    {
+      "name": "environment",
+      "type": "string",
+      "label": "Environment",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Environment to deploy (e.g. CI, UAT, PROD...)"
+    },
+    {
+      "name": "searchPattern",
+      "type": "string",
+      "label": "Search pattern",
+      "defaultValue": "DEPLOY_{0}__",
+      "required": true,
+      "helpMarkDown": "Variables to substitute have to starts with this string pattern. The pattern have to include one dynamic variable to hold the environement (e.g. DEPLOY_{0}__)"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "task.ps1"
+    }
+  }
+}
